@@ -5,7 +5,9 @@
 ██╔══██╗██╔══██║   ██║      ██║   ██╔══╝  ██╔══██╗  ╚██╔╝  ╚════██║██╔══██║╚██╗ ██╔╝██╔══╝  ██╔══██╗
 ██████╔╝██║  ██║   ██║      ██║   ███████╗██║  ██║   ██║   ███████║██║  ██║ ╚████╔╝ ███████╗██║  ██║
 ╚═════╝ ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
--Version 1.1
+-Version Shupack.1.1
+
+mine is 2105 24kWh, so 9 on line 101 (?)
 */
 
 //Globals
@@ -96,7 +98,7 @@ volatile	uint8_t		carParked		= 1;
 	mux_5bc_CapacityCharge = (frame.data[4] & 0x0F); //Save the mux containing info if we have capacity or chargebars in the message [8 / 9] [40kWh 14/15]
 	if (timeToSetCapacityDisplay > 0)
 	{
-		if (mux_5bc_CapacityCharge == 15)	//Only when the muxed field is equal to 15, ONLY VALID FOR 40kWh packs!!!, 9 for 2013-2016 24kWh BMS 
+		if (mux_5bc_CapacityCharge == 9)	//Only when the muxed field is equal to 15, ONLY VALID FOR 40kWh packs!!!, ***9 for 2013-2016 24kWh BMS *****
 		{
 			frame.data[2] = (uint8_t) ((frame.data[2] & 0x0F) | SetCapacityDisplay << 4);
 		}
